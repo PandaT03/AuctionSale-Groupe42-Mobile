@@ -13,17 +13,16 @@ const Login: React.FC<Connexion> = ({connect}) => {
       email : props.email,
       password : props.password
     }).then((data) => {
-      props.email = "";
-      props.password = "";
+      props.email = "divno@gmail.com";
+      props.password = "Divno01!";
       localStorage.setItem("token",JSON.stringify(data.data));
       connect(true);
       router.push("/accueil","forward","push");
     }).catch((err) => {
-      alert("L'utilisateur n'existe pas");
     });
   }
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('divno@gmail.com');
+  const [password, setPassword] = useState('Divno01!');
   const utilisateur = {
     email : email,
     password : password
@@ -42,13 +41,13 @@ const Login: React.FC<Connexion> = ({connect}) => {
         <IonInput
           required
           placeholder="Email"
-          value="divno@gmail.com"
+          value={email}
           onIonInput={(e:any) => setEmail(e.target.value)}
         />
         <IonInput
           type="password"
           placeholder="Password"
-          value="Divno01!"
+          value={password}
           onIonInput={(e:any) => setPassword(e.target.value)}
         />
          
